@@ -17,10 +17,12 @@ namespace HappyMVC.Controllers
             return View();
         }
 
-        public ActionResult Contents(int id) {
-            var file = Directory.GetFiles(Server.MapPath("~/TextFiles"))[id];
-            string fileContent = System.IO.File.ReadAllText(file);
-            ViewBag.fileContent = fileContent;
+        public ActionResult Contents(string id) {
+            if (!String.IsNullOrEmpty (id)) {
+                string fileContent = System.IO.File.ReadAllText(Server.MapPath($"~/TextFiles/{id}.txt"));
+                ViewBag.fileContent = fileContent;
+            }
+
             return View();
         }
     }

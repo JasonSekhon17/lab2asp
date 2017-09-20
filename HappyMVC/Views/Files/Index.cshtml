@@ -9,9 +9,9 @@
 
 <ul>
 
-@for (var i = 0; i < files.Length; i++)
+@foreach (var i in files)
 {
-    <li>@Html.ActionLink(files[i], "Contents", new { id = i})</li>
+    <li>@Html.ActionLink(Path.GetFileNameWithoutExtension(@i), "Contents", new { id = Path.GetFileNameWithoutExtension(@i) })</li>
 }
 </ul>
 
